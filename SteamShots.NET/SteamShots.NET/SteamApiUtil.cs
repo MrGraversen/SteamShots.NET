@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using SteamShots.NET.ApiObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +18,19 @@ namespace SteamShots.NET
 
             string apiUrl = string.Format("{0}/ISteamUser/GetPlayerSummaries/v0002/?key={1}&steamids={2}", steamBaseApiUrl, steamApiKey, steamId64Bit);
 
-            WebClient webClient = new WebClient();
-            string jsonString = webClient.DownloadString(apiUrl);
+            try
+            {
+                WebClient webClient = new WebClient();
+                string jsonString = webClient.DownloadString(apiUrl);
 
-            dynamic dynamicJsonObject = JsonConvert.DeserializeObject(jsonString);
+                dynamic dynamicJsonObject = JsonConvert.DeserializeObject(jsonString);
 
-            return dynamicJsonObject.response.players[0].personaname;
+                return dynamicJsonObject.response.players[0].personaname;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

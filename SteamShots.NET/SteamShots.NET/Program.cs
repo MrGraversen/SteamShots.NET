@@ -1,5 +1,4 @@
-﻿using SteamShots.NET.ApiObjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -12,7 +11,22 @@ namespace SteamShots.NET
     {
         static void Main(string[] args)
         {
-            PlayerSummary playerSummary = SteamApiUtil.GetPlayerSummary(FileUtil.ReadApiKey(), SteamUtil.ConvertSteamId32BitTo64Bit("35686634"));
+            Console.Title = "SteamShots.NET";
+
+            IEnumerable<string> steamUserIds = SteamUtil.GetUserProfiles();
+            Console.WriteLine("{ " + string.Join(", ", steamUserIds.ToArray<string>()) + " }");
+            foreach (string steamUserId in steamUserIds)
+            {
+                string steamUsername = SteamApiUtil.GetSteamUsername(FileUtil.ReadApiKey(), steamUserId);
+                Console.WriteLine(steamUsername);
+                Console.WriteLine();
+
+                foreach (string gameId in SteamUtil.GetGamesWithScreenshots(steamUserId))
+                {
+                    Console.WriteLine(gameId);
+                }
+            }
+
             Console.ReadKey();
         }
     }

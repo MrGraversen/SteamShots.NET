@@ -9,9 +9,28 @@ namespace SteamShots.NET
 {
     class SteamUtil
     {
-        public static string[] GetUserProfiles(string basePath)
+        public static IEnumerable<string> GetUserProfiles()
         {
-            return Directory.GetDirectories(basePath);
+            string steamPath = string.Format("{0}\\{1}", RegistryUtil.GetSteamInstallPath(), "userdata");
+            foreach (string directory in Directory.GetDirectories(steamPath))
+            {
+                yield return new DirectoryInfo(directory).Name;
+            }
+        }
+
+        public static IEnumerable<string> GetGamesWithScreenshots(string steamId32Bit)
+        {
+            string screenshotsPath = string.Format("{0}\\{1}\\{2}\\{3}", RegistryUtil.GetSteamInstallPath(), "userdata", steamId32Bit, "760\\remote");
+
+            if (!Directory.Exists(string.Format(screenshotsPath)))
+            {
+                yield break;
+            }
+
+            foreach (string directory in Directory.GetDirectories(screenshotsPath))
+            {
+                yield return new DirectoryInfo(directory).Name;
+            }
         }
 
         public static string ConvertSteamId32BitTo64Bit(string steamId32)
