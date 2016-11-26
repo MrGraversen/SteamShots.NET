@@ -250,3 +250,4 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+SteamShots.NET/SteamShots.NET/steam_api_key.txt
