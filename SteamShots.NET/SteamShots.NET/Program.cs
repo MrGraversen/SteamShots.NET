@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SteamShots.NET.ApiObjects;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace SteamShots.NET
     {
         static void Main(string[] args)
         {
-            Debug.WriteLine(SteamUtil.ConvertSteamId32BitTo64Bit("35686634"));
+            PlayerSummary playerSummary = SteamApiUtil.GetPlayerSummary(FileUtil.ReadApiKey(), SteamUtil.ConvertSteamId32BitTo64Bit("35686634"));
             Console.ReadKey();
         }
     }
