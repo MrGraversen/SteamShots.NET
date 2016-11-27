@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace SteamShots.NET
     class SteamApiUtil
     {
         private const string steamBaseApiUrl = "http://api.steampowered.com/";
+        private const string steamBaseStoreApiUrl = "http://store.steampowered.com/api/appdetails?appids=";
 
         public static string GetSteamUsername(string steamApiKey, string steamId32Bit)
         {
@@ -26,6 +28,26 @@ namespace SteamShots.NET
                 dynamic dynamicJsonObject = JsonConvert.DeserializeObject(jsonString);
 
                 return dynamicJsonObject.response.players[0].personaname;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static string GetSteamGameName(string steamAppId)
+        {
+            string apiUrl = string.Format("{0}{1}", steamBaseStoreApiUrl, steamAppId);
+
+            try
+            {
+                WebClient webClient = new WebClient();
+                string jsonString = webClient.DownloadString(apiUrl);
+
+                JObject jsonObject = JObject.Parse(jsonString);
+                JToken gameNameJsonToken = jsonObject[steamAppId]["data"]["name"];
+
+                return gameNameJsonToken.ToString();
             }
             catch
             {

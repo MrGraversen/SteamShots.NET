@@ -33,6 +33,11 @@ namespace SteamShots.NET
             }
         }
 
+        public static string GetGameScreenshotsFullPath(string steamId32Bit, string gameId)
+        {
+            return string.Format("{0}\\{1}\\{2}\\{3}\\{4}\\{5}", RegistryUtil.GetSteamInstallPath(), "userdata", steamId32Bit, "760\\remote", gameId, "screenshots");
+        }
+
         public static string ConvertSteamId32BitTo64Bit(string steamId32)
         {
             return string.Format("{0}{1}", "765", (Convert.ToInt32(steamId32) + 61197960265728));

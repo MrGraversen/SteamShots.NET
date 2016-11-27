@@ -10,10 +10,11 @@ namespace SteamShots.NET
     class RegistryUtil
     {
         private const string userRoot = "HKEY_CURRENT_USER";
+        private static string steamInstallPathCached = null;
 
         public static string GetSteamInstallPath()
         {
-            return (string) Registry.GetValue(string.Format("{0}\\{1}", userRoot, "Software\\Valve\\Steam"), "SteamPath", "NOT FOUND");
+            return steamInstallPathCached ?? (steamInstallPathCached = (string) Registry.GetValue(string.Format("{0}\\{1}", userRoot, "Software\\Valve\\Steam"), "SteamPath", null));
         }
     }
 }
