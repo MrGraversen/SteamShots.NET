@@ -11,7 +11,7 @@ A Windows utility to disover, extract, and organize the arcaic hell that is Stea
 
 In short, the following is done to accomplish this task:
 
-1. Discover the Steam installation path using the Windows registry
+1. Discover the Steam installation path using the Windows registry (`HKEY_CURRENT_USER\Software\Valve\Steam, SteamPath`)
 2. Discover any users (in 32 bit steam-id format)
 3. Convert 32 bit steam-id to 64-bit steam id (required by the Steam Web API)
 4. For each discovered user, discover any games with screenshots
