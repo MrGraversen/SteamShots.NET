@@ -27,3 +27,11 @@ In short, the following is done to accomplish this task:
 **Produces the following directory tree (excluding the files)**
 
 ![CMD](http://media.martinbytes.com/2016-11-27_02-21-17.png)
+
+### Improvements
+
+The utility is resistent to most sorts of errors.
+There are some checks in place to ensure nothing bad happens.
+Some error resistence is also an effect of external factors, for example if you put in an invalid API key, the user IDs simply don't resolve, etc.
+
+Please feel free to add improvements to this utility.
