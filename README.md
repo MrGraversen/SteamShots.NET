@@ -1,6 +1,6 @@
 # SteamShots.NET
 
-An utility to disover, extract, and organize the arcaic hell that is Steam screenshots.
+A Windows utility to disover, extract, and organize the arcaic hell that is Steam screenshots.
 
 ### Dependencies and Requirements
 
