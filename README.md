@@ -2,7 +2,7 @@
 
 A Windows utility to disover, extract, and organize the arcaic hell that is Steam screenshots.
 
-Extracted screenshots are copied to `%USERPROFILE\Desktop\SteamShots.NET`.
+Extracted screenshots are copied to `%USERPROFILE%\Desktop\SteamShots.NET`.
 
 ### Dependencies and Requirements
 
