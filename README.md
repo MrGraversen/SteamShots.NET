@@ -2,10 +2,12 @@
 
 A Windows utility to disover, extract, and organize the arcaic hell that is Steam screenshots.
 
+Extracted screenshots are copied to `%USERPROFILE\Desktop\SteamShots.NET`.
+
 ### Dependencies and Requirements
 
 * Depends on JSON.NET
-* Requires a [valid Steam Web API key](https://steamcommunity.com/dev/apikey) (`steam_api_key.txt` next to the executable)
+* Requires a [valid Steam Web API key](https://steamcommunity.com/dev/apikey) (goes in`steam_api_key.txt` next to the executable)
 
 ### Process Overview
 
